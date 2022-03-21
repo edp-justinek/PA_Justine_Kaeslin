@@ -1,0 +1,194 @@
+<cms type="masterPage" value="masterpage.htm"></cms>
+<style>
+  .mitglTable tr > th {
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    padding: 10px 5px 10px 10px;
+    text-align:center;
+  }
+  .mitglTable tr > td{
+    text-align:center;
+    padding: 5px;
+  }
+</style>
+
+
+
+
+
+<div class="row">
+    <div class="col-sm-12 mb-3">
+        <h6>
+			<a href="/?home" class="text-decoration-none">Hauptseite</a> 
+			<span> / </span>
+			<a href="/?Benutzerkonto_Daten" class="text-decoration-none">Benutzerkonto</a>
+			<span> / </span>
+			<span>Mitglieder</span>
+		</h6>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <h2 class="text-center">Mitglieder verwalten</h2>
+  </div>
+</div>
+
+
+<div class="col-xs-12 mb-5">
+  <div class="text-center">
+	<a class="btn btn-light mb-2 text-primary" href="/?Benutzerkonto_Daten">
+		<h4>Daten</h4>
+	</a>
+	<a class="btn btn-light mb-2 text-primary" href="/?Benutzerkonto_Abos">
+		<h4>Abos</h4>
+	</a>
+	<a class="btn btn-light mb-2 text-primary" href="/?Benutzerkonto_Bestellungen">
+		<h4><u>Bestellungen</u></h4>
+	</a>
+	<a class="btn btn-light mb-2 text-primary" href="/?Benutzerkonto_Mitglieder">
+		<h4>Mitglieder</h4>
+	</a>
+  </div>
+</div>
+
+<h3>Mitglieder verwalten</h3><br>
+
+<div class="row content-box">
+  <div class="col-sm-12 col-md-5">
+    <b>Zugriffsnummer:</b> <br>
+    <input type="text" value="Nummer generieren" disabled id="outputGenerateString"><button onclick="generateString(16)"><i class="bi bi-arrow-clockwise"></i></button></input>
+	
+  </div>
+  <div class="col-sm-5">
+    <b>Mehrpersonen Abo:</b> <br>
+    <select name="abos" id="abos">
+      <option value="abo1">EDP Today Digital</option>
+      <option value="abo2">EDP Weekly Digital</option>
+    </select>
+  </div>
+</div>
+<br>
+
+
+<table class="content-box mitglTable" width="100%">
+  <tr>
+    <th>Name</th>
+    <th>E-Mail</th>
+    <th>Admin</th>
+    <th>Löschen</th>
+  </tr>
+   <tr id="MitgliederList">
+	<td id="name"></td>
+    <td id="email"></td>
+    <td><input type="checkbox"></td>
+    <td><button data-target="#deletMitglied" data-toggle="modal"><i class="bi bi-trash-fill"></i></button></td>
+  </tr>
+  <tr>
+    <td>Mag Ham</td>
+    <td>mag.ham@edp.ch</td>
+    <!--Anderen Miglied Administrationsrecht vergeben-->
+    <td><input type="checkbox"></td>
+    <!--Mitglied löschen-->
+    <td><button data-target="#deletMitglied" data-toggle="modal"><i class="bi bi-trash-fill"></i></button></td>
+  </tr>
+  <tr>
+    <td>Joan Clarke</td>
+    <td>joan.clarke@edp.ch</td>
+    <!--Anderen Miglied Administrationsrecht vergeben-->
+    <td><input type="checkbox"></td>
+    <!--Mitglied löschen-->
+    <td><button data-target="#deletMitglied" data-toggle="modal"><i class="bi bi-trash-fill"></i></button></td>
+  </tr>
+</table>
+<br>
+
+		<!--Mitglied hinzufügen-->
+		<div class="float-right col-sm-12">
+		  <button class="btn btn-md btn-primary btn-block btn-clr"><a class="btn-primary" href="/?Benutzerkonto_Mitglied_hinzufügen">Mitglied hinzufügen</a></button>
+		</div>
+	</cms>
+</td>
+<td>
+    <!-- Modal -->
+    <div class="modal fade" id="deletMitglied" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Mitglied löschen</h4>
+          </div>
+          <div class="modal-body">
+            <p>Sind Sie sicher dass Sie dieses Mitglied löschen möchten?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Schliessen</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+	
+	<script>
+	
+	const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	function generateString(length) {
+		let result = ' ';
+		const charactersLength = characters.length;
+		for ( let i = 0; i < length; i++ ) {
+			result += characters.charAt(Math.floor(Math.random() * charactersLength));
+		}
+	document.getElementById("outputGenerateString").value = result;
+	console.log(result);
+	}
+	
+	
+	
+const mitglieder = {
+  "Anrede": "01",
+  "Name": "Hop",
+  "Vorname": "Grace",
+  "EmailAdr": "grace.hop@edp.ch",
+  "passwort": "123456",
+  "passwort_hidden": "123456",
+  "checkAGB": "true"
+}/*,
+{
+  "Anrede": "01",
+  "Name": "Ham",
+  "Vorname": "Mag",
+  "EmailAdr": "mag.ham@edp.ch",
+  "passwort": "123456",
+  "passwort_hidden": "123456",
+  "checkAGB": "true"
+},{
+  "Anrede": "01",
+  "Name": "Joan",
+  "Vorname": "Clarke",
+  "EmailAdr": "joan.clarke@edp.ch",
+  "passwort": "123456",
+  "passwort_hidden": "123456",
+  "checkAGB": "true"
+}*/
+
+
+
+
+/*for(const mitglied of mitglieder){
+	const mitgName = mitglied.Vorname + " " + mitglied.Name;
+	const mitgemail = mitglied.EmailAdr;
+	const td = document.createElement("td");
+	
+	td.textContent = mitgName;
+	document.getElementById("MitgliederList").appendChild(li);
+}*/
+
+
+
+let fullname = mitglieder.Vorname + " " + mitglieder.Name;
+	document.getElementById("name").innerText = fullname;
+	document.getElementById("email").innerText = mitglieder.EmailAdr;
+</script>

@@ -1,0 +1,134 @@
+<cms type="masterPage" value="masterpage.htm"></cms>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h5 class="dispInline"><a href="/?home">Hauptseite</a> / </h5>
+    </div>
+</div>
+<br>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Miglieder einer Familie- / Organisationsabo</h3>Sie sind Miglieder einer Familie- / Organisationsabo mit Abo? 
+        <br> Dann können Sie sich hier registrieren und mit dem Zugriffscode dem bestehenden Abo beizutreten.
+    </div>
+</div>
+
+<div class="row content-box m-3">
+    <div class="col-sm-10">
+		<section class="contact-form">
+			<form class="form-horizontal content-box">
+				<h4><b>Zugriffscode des bestehenden Abos</b></h4><br>
+				<!--<input type="hidden" name="registerOK_hidden" value="/?Registrationsbestätigung?info=Vielen Dank, die Registration war erfolgreich.">-->
+                <div class="form-group row">
+                    <label for="zugrcd" class="col-sm-2 col-form-label">Zugriffscode*:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="zugrcd" name="zugrcd" placeholder="Zugriffscode eingeben">
+                    </div>
+                </div>
+				<br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3><b>Infos</b></h3>
+                    </div>
+                </div>
+				<div class="form-group row" style="display:none">
+					<select class="form-control" id="Admin" name="Admin" required>
+						<option value="Mitglied">Mitglied</option>
+					</select>
+                </div>
+                <div class="form-group row">
+                    <label for="Anrede" class="col-sm-2 col-form-label">Anrede:</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" id="Anrede" name="Anrede" required>
+                            <option value="01">Herr</option>
+                            <option value="02">Frau</option>
+                        </select>
+                    </div>
+                </div>
+				<br>
+                <div class="form-group row">
+                    <label for="Name" class="col-sm-2 col-form-label">Name*:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="Name" name="Name" placeholder="Nachname" required>
+                    </div>
+                </div>
+				<br>
+                <div class="form-group row">
+                    <label for="Name" class="col-sm-2 col-form-label">Vorname*:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="Vorname" name="Vorname" placeholder="Vorname erfassen" required>
+                    </div>
+                </div>
+				<br>
+                <div class="form-group row">
+                    <label for="EmailAdr" class="col-sm-2 col-form-label">E-Mail-Adresse*:</label>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control" id="EmailAdr" name="EmailAdr" placeholder="E-Mail-Adresse erfassen" data-error="ungültige E-Mail-Adresse" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+				<br>
+                <div class="form-group row">
+                    <label for="passwort" class="col-sm-2 col-form-label">Passwort*:</label>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <input type="password" data-minlength="6" tabindex="0" class="form-control pwd checkme" id="passwort" name="passwort" placeholder="Passwort" required>
+                            <span class="input-group-btn">
+								<button class="btn btn-default btnPWEye reveal" tabindex="-1" type="button" onclick="showPW()"><i class="glyphicon glyphicon-eye-open"></i></button>
+							</span>
+                        </div>
+                        <span class="help-block">Minimal 6 Zeichen</span>
+                    </div>
+					
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <input type="password" data-minlength="6" tabindex="0" class="form-control pwd checkme" id="passwort_hidden" name="passwort_hidden" data-match="#passwort" data-match-error="Passwörter sind nicht identisch" placeholder="Passwort wiederholen" required>
+                            <span class="input-group-btn">
+								<button class="btn btn-default btnPWEye reveal border" tabindex="-1" type="button" onclick="showSecondPW()"><i class="bi bi-eye-fill"></i></button>
+							</span>                        </div>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+				<br>
+                <div class="form-group row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-9">
+						<p>
+							<input type="checkbox" name="checkAGB" value="true">
+                            <a class="link btn-link" href="/images/agb_de-CH.pdf" target="_blank">Ich habe die allgemeinen Geschäftsbedingungen gelesen und bin damit einverstanden</a>
+                        </p>
+
+                        <br><br>
+                    </div>
+					<div class="col-sm-7"></div>
+					<button type="submit" class="col-sm-4 btn btn-md btn-primary btn-block btn-clr" onclick="PWcheck()"><a class="btn-primary">Registrieren</a></button>
+                </div>
+            </form>
+		</section>
+    </div>
+</div>
+
+
+<script>
+
+	function handleFormSubmit(event) {
+  event.preventDefault();
+  
+  const data = new FormData(event.target);
+  
+  const formJSON = Object.fromEntries(data.entries());
+
+  //formJSON.snacks = data.getAll('snacks');
+  
+  let registerResult;
+  registerResult = JSON.stringify(formJSON, null, 2);
+  
+  console.log(registerResult);
+}
+
+const form = document.querySelector('.contact-form');
+form.addEventListener('submit', handleFormSubmit);
+
+</script>
