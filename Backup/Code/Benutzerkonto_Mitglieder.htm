@@ -78,12 +78,10 @@
     <th>Admin</th>
     <th>Löschen</th>
   </tr>
-   <tr id="MitgliederList">
-	<td id="name"></td>
-    <td id="email"></td>
-    <td><input type="checkbox"></td>
-    <td><button data-target="#deletMitglied" data-toggle="modal"><i class="bi bi-trash-fill"></i></button></td>
+  <tr class="header">
+  
   </tr>
+ 
   <tr>
     <td>Mag Ham</td>
     <td>mag.ham@edp.ch</td>
@@ -147,17 +145,14 @@
 	
 	
 	
-const mitglieder = {
-  "Anrede": "01",
+const mitglieder = [{
   "Name": "Hop",
   "Vorname": "Grace",
   "EmailAdr": "grace.hop@edp.ch",
   "passwort": "123456",
   "passwort_hidden": "123456",
   "checkAGB": "true"
-}/*,
-{
-  "Anrede": "01",
+},{
   "Name": "Ham",
   "Vorname": "Mag",
   "EmailAdr": "mag.ham@edp.ch",
@@ -165,14 +160,31 @@ const mitglieder = {
   "passwort_hidden": "123456",
   "checkAGB": "true"
 },{
-  "Anrede": "01",
   "Name": "Joan",
   "Vorname": "Clarke",
   "EmailAdr": "joan.clarke@edp.ch",
   "passwort": "123456",
   "passwort_hidden": "123456",
   "checkAGB": "true"
-}*/
+}]
+
+
+for(const mitglied of mitglieder){
+	const tableRow = document.createElement('tr');
+	const tableData1 = document.createElement('td');
+	const tableData2 = document.createElement('td');
+	const header = document.querySelector('.header');
+	
+	tableData1.textContent = `${mitglieder.Vorname}`;
+	tableData2.textContent = `${mitglieder.email}`;
+	
+	tableRow.appendChild(tableData1);
+	tableRow.appendChild(tableData2);
+	
+
+	
+	header.appendChild(tableRow);
+}
 
 
 
@@ -188,7 +200,8 @@ const mitglieder = {
 
 
 
-let fullname = mitglieder.Vorname + " " + mitglieder.Name;
+/*let fullname = mitglieder.Vorname + " " + mitglieder.Name;
 	document.getElementById("name").innerText = fullname;
-	document.getElementById("email").innerText = mitglieder.EmailAdr;
+	document.getElementById("email").innerText = mitglieder.EmailAdr;*/
+	
 </script>
