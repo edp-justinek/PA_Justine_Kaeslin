@@ -41,7 +41,7 @@
     <div class="col-sm-10">
         <div class="content-box">
 			<section class="contact-form">
-            <form action="/shop/registerUser" method="post" data-toggle="validator" class="form-horizontal content-box">
+            <form action="" method="post" data-toggle="validator" class="form-horizontal content-box">
 				<div class="form-group row">
                     <label for="Anrede" class="col-sm-2 col-form-label">Anrede:</label>
                     <div class="col-sm-9">
@@ -112,7 +112,7 @@
                     <div class="col-sm-8"></div>
                     <div class="col-sm-3">
               
-						<button type="submit" class="btn btn-md btn-primary btn-block btn-clr" onclick="PWcheck()"><a class="btn-primary" >Mitglied hinzufügen</a></button>
+						<button id="btn" type="submit" class="btn btn-md btn-primary btn-block btn-clr" onclick="PWcheck()"><a class="btn-primary" >Mitglied hinzufügen</a></button>
                     </div>					
                 </div>
 				
@@ -124,18 +124,20 @@
                 </div>
             </form>
 		</section>
+		
+		<div id="name"></div>
+		<div id="email"></div>
 
 
 <script>
 
-	function handleFormSubmit(event) {
+/*	function handleFormSubmit(event) {
   event.preventDefault();
   
   const data = new FormData(event.target);
   
   const formJSON = Object.fromEntries(data.entries());
 
-  //formJSON.snacks = data.getAll('snacks');
   
   let mitgliedResult;
   mitgliedResult = JSON.stringify(formJSON, null, 2);
@@ -144,6 +146,36 @@
 }
 
 const form = document.querySelector('.contact-form');
-form.addEventListener('submit', handleFormSubmit);
+form.addEventListener('submit', handleFormSubmit);*/
+
+
+
+let mitgliederList = []
+const addMitglied = (ev)=>{
+	ev.preventDefault();
+	let mitglied = {
+		id: Date.now(),
+		name: document.getElementById('Vorname').value + " " + document.getElementById('Name').value,
+		email: document.getElementById('EmailAdr').value
+	}
+		mitgliederList.push(mitglied);
+		//document.querySelector('form').reset();
+	
+	console.log(mitgliederList);
+	
+	//saving to localStorage
+	localStorage.setItem('MyMovieList', JSON.stringify(mitgliederList) );
+	}
+	document.addEventListener('DOMContentLoaded', ()=>{
+	document.getElementById('btn').addEventListener('click', addMitglied);
+	getMitglied();
+});
+
+function getMitglied() {
+  let name = localStorage.getItem("name");
+  document.getElementById("name").innerHTML = name;
+   let email = localStorage.getItem("email");
+  document.getElementById("name").innerHTML = email;
+}
 
 </script>
