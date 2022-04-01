@@ -21,16 +21,16 @@
 
 <div class="col-xs-12 mb-5">
     <div class="text-center">
-        <a class="btn btn-light mb-2" href="/?Benutzerkonto_Daten">
+        <a class="btn btn-light mb-2 text-primary" href="/?Benutzerkonto_Daten">
             <h4>Daten</h4>
         </a>
-        <a class="btn btn-light mb-2" href="/?Benutzerkonto_Abos">
+        <a class="btn btn-light mb-2 text-primary" href="/?Benutzerkonto_Abos">
             <h4>Abos</h4>
         </a>
-        <a class="btn btn-light mb-2" href="/?Benutzerkonto_Bestellungen">
+        <a class="btn btn-light mb-2 text-primary" href="/?Benutzerkonto_Bestellungen">
             <h4>Bestellungen</h4>
         </a>
-		<a class="btn btn-light mb-2" href="/?Benutzerkonto_Mitglieder"><h4>Mitglieder</h4></a>
+		<a class="btn btn-light mb-2 text-primary" href="/?Benutzerkonto_Mitglieder"><h4>Mitglieder</h4></a>
     </div>
 </div>
 
@@ -41,141 +41,135 @@
     <div class="col-sm-10">
         <div class="content-box">
 			<section class="contact-form">
-            <form action="" method="post" data-toggle="validator" class="form-horizontal content-box">
-				<div class="form-group row">
-                    <label for="Anrede" class="col-sm-2 col-form-label">Anrede:</label>
-                    <div class="col-sm-9">
-                        <select class="form-control" id="Anrede" name="Anrede" required>
-                            <option value="01">Herr</option>
-                            <option value="02">Frau</option>
-                        </select>
-                    </div>
-                </div>
-				<br>
+			
+  <form action="/shop/registerAdmin" class="col-sm-8" method="post" data-toggle="validator" id="registerForm">
+	<input type="hidden" name="registerOK_hidden" value="/?Benutzerkonto_Mitglieder">
+	  <div class="row">
+	 
+			
+			<div class="input-group mb-3 displNone">
+                <label for="zugrcd" class="w-100">Zugriffscode*</label>
+				<input type="text" class="form-control" id="zugrcd" name="zugrcd" value="1a2a3a4a5a6a7a8a" placeholder="Zugriffscode eingeben">                   
+            </div>
+			
+			<h3>Infos</h3>
 
-                <div class="form-group row">
-                    <label for="Name" class="col-sm-2 col-form-label">Name*:</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="Name" name="Name" placeholder="Nachname" required>
-                    </div>
-                </div>
-				<br>
-                <div class="form-group row">
-                    <label for="Name" class="col-sm-2 col-form-label">Vorname*:</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="Vorname" name="Vorname" placeholder="Vorname" required>
-                    </div>
-                </div>
-				<br>
-                <div class="form-group row">
-                    <label for="EmailAdr" class="col-sm-2 col-form-label">E-Mail-Adresse*:</label>
-                    <div class="col-sm-9">
-                        <input type="email" class="form-control" id="EmailAdr" name="EmailAdr" placeholder="E-Mail-Adresse" data-error="ungültige E-Mail-Adresse" required>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                </div>
-				<br>
-                <div class="form-group row">
-                    <label for="passwort" class="col-sm-2 col-form-label">Passwort*:</label>
-                    <div class="col-sm-4">
-                        <div class="input-group">
-                            <input type="password" data-minlength="6" tabindex="0" class="form-control pwd checkme" id="passwort" name="passwort" placeholder="Passwort" required>
-                            <span class="input-group-btn">
-            <button class="btn btn-default btnPWEye reveal" tabindex="-1" type="button" onclick="showPW()"><i
-                class="glyphicon glyphicon-eye-open"></i></button>
-            </span>
-                        </div>
-                        <span class="help-block">Minimal 6 Zeichen</span>
-                    </div>
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-4">
-                        <div class="input-group">
-                            <input type="password" data-minlength="6" tabindex="0" class="form-control pwd checkme" id="passwort_hidden" name="passwort_hidden" data-match="#passwort" data-match-error="Passwörter sind nicht identisch" placeholder="Passwort wiederholen" required>
-                            <span class="input-group-btn">
-								<button class="btn btn-default btnPWEye reveal border" tabindex="-1" type="button" onclick="showSecondPW()"><i class="bi bi-eye-fill"></i></i></button>
-							</span>
-                        </div>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                </div>
-				<br>
-                <div class="form-group row">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-8">
-                        <p>
-                            <input type="checkbox" name="checkAGB" value="true">
-                            <a class="link btn-link" href="/images/agb_de-CH.pdf" target="_blank">Ich habe die allgemeinen Geschäftsbedingungen gelesen und bin damit einverstanden</a>
-                        </p>
+			<div class="mb-3">
+				<div>
+					<label class="w-100">Anrede*</label>
+				</div>
+				<label class="form-check-label" for="AnredeM">Herr</label>
+				<input type="radio" name="Anrede" id="AnredeM" class="form-check-input me-3" value="01" required>
+				<label class="form-check-label" for="AnredeF">Frau</label>
+				<input type="radio" name="Anrede" id="AnredeF" class="form-check-input me-3" value="02">
+			</div>
 
-                        
-                    </div>
-                    <div class="col-sm-8"></div>
-                    <div class="col-sm-3">
-              
-						<button id="btn" type="submit" class="btn btn-md btn-primary btn-block btn-clr" onclick="PWcheck()"><a class="btn-primary" >Mitglied hinzufügen</a></button>
-                    </div>					
-                </div>
-				
-				<div class="form-group row">
-                    <div class="col-sm-9"></div>
-                    <div class="col-sm-1">
-                        <a href="/?Benutzerkonto_Mitglieder">Zurück</a>
-                    </div>
-                </div>
-            </form>
+
+			<div class="input-group mb-3">
+				<label for="Name" class="w-100">Name*</label>
+				<input type="text" class="form-control" id="Name" name="Name" placeholder="Nachname erfassen" required>
+			</div>
+
+			<div class="input-group mb-3">
+				<label for="Vorname" class="w-100">Vorname*</label>
+				<input type="text" class="form-control" id="Vorname" name="Vorname" placeholder="Vorname erfassen" required>
+			</div>
+			
+
+			<div class="input-group mb-3">
+				<label for="Land" class="w-100">Land*</label>
+				<select class="form-control" id="Land" name="Land">
+					<option value="CH">Schweiz</option>
+					<option value="DE">Deutschland</option>
+					<option value="AT">Österreich</option>
+					<option value="IT">Italien</option>
+				</select>
+			</div>
+			
+			<h3>Konto</h3>
+
+			<div class="input-group mb-3">
+				<label for="EmailAdr" class="w-100">E-Mail*</label>
+				<input type="email" class="form-control" id="EmailAdr" name="EmailAdr" placeholder="E-Mail-Adresse erfassen" data-error="ungültige E-Mail-Adresse" required>
+			</div>
+			
+			<div class="input-group mb-3">
+				<label for="passwort" class="w-100">Passwort*</label>
+				<input type="password" minlength="6" class="form-control" tabindex="0" id="passwort" name="passwort" placeholder="Passwort" required>
+				<input type="password" minlength="6" class="form-control" tabindex="0" id="passwort_hidden" name="passwort_hidden" data-match="#passwort" data-match-error="Passwörter sind nicht identisch" placeholder="Passwort wiederholen" required>
+				<button type="button" class="btn btn-light border" onclick="showPW();showSecondPW();"><i class="bi bi-eye-fill"></i></button>
+				<div class="form-text w-100">Minimal 6 Zeichen</div>
+			</div>
+		</div>
+
+
+			<div class="mb-3">
+				<input type="checkbox" class="form-check-input" name="checkAGB" value="true" required>
+				<a class="link btn-link" href="https://zofingertagblatt.ch/agb" target="_blank">
+					Ich habe die allgemeinen Geschäftsbedingungen gelesen und bin damit
+					einverstanden
+				</a>
+			</div>
+			
+			<div class="input-group mb-3">
+				<button type="submit" id="AdrSaveBtn" onclick="addMitglied()" class="btn btn-primary ms-auto">Registrieren</button>
+			</div>
+
+			<div class="input-group mb-3">
+				<a class="ms-auto" href="javascript:window.history.back();">Zurück</a>
+			</div>
+		</div>
+	</div>
+</form>
 		</section>
 		
-		<div id="name"></div>
-		<div id="email"></div>
 
 
 <script>
-
-/*	function handleFormSubmit(event) {
-  event.preventDefault();
-  
-  const data = new FormData(event.target);
-  
-  const formJSON = Object.fromEntries(data.entries());
-
-  
-  let mitgliedResult;
-  mitgliedResult = JSON.stringify(formJSON, null, 2);
-  
-  console.log(mitgliedResult);
-}
-
-const form = document.querySelector('.contact-form');
-form.addEventListener('submit', handleFormSubmit);*/
-
-
-
-let mitgliederList = []
-const addMitglied = (ev)=>{
-	ev.preventDefault();
-	let mitglied = {
-		id: Date.now(),
-		name: document.getElementById('Vorname').value + " " + document.getElementById('Name').value,
-		email: document.getElementById('EmailAdr').value
-	}
-		mitgliederList.push(mitglied);
-		//document.querySelector('form').reset();
 	
-	console.log(mitgliederList);
-	
-	//saving to localStorage
-	localStorage.setItem('MyMovieList', JSON.stringify(mitgliederList) );
+
+	function addMitglied(){	
+		//Inhalte der Input Felder auslesen und in Constanten speichern
+		const zugrcd = document.getElementById("zugrcd").value;
+		const name = document.getElementById("Name").value;
+		const fiName = document.getElementById("Vorname").value;
+		const email = document.getElementById("EmailAdr").value;
+		
+		//Ein Object mit den "Values" erstellen und zusätzlich die adminRights als boolean Wert mitgeben dazu ist im Formular
+		//der Zugriffscode ausgeblendet der auch mitgegeben wird, damit mit dem anhängen des Backends, dies auch mitgegeben wird um das 
+		//Mitglied mit dem Administrator per Zugriffscode zu verbinden
+		addNewFakeMitglied({
+			zugrcd,
+			name,
+			fiName,
+			email,
+			adminRights: false
+		});
+		
+		//Da zuvor über den Submit Button das Passwort geprüft wurde, habe ich diese funktion hier hinzugefügt damit diese
+		//Funktion auch weiterhin per klick auf dem Submit Button aufgerufen wird.
+		PWcheck();		
 	}
-	document.addEventListener('DOMContentLoaded', ()=>{
-	document.getElementById('btn').addEventListener('click', addMitglied);
-	getMitglied();
-});
+	
+	//-----------------------------------------------------------------------------------------------------------------------
+	
+	//In dieser Funktion wird das erstelle Mitglied gelesen und der bestehenden Liste hinzugefügt
+	function addNewFakeMitglied(mitglied) {
+		//Hier wird der String-Name den wir auslesen möchten als konstante gespeichert
+		const fakeMitgliedKey = 'fake-mitglieder';
+		//Dann gibt es die prüfung ob überhaupt etwas vorhanden ist
+		if(!mitglied) return;
+		//Danach wird das Mitglied das erstellt wurde aus dem sessenStorage mit der getItem Funktion ausgelesen
+		let fakeMitglieder = JSON.parse(sessionStorage.getItem(fakeMitgliedKey));
 
-function getMitglied() {
-  let name = localStorage.getItem("name");
-  document.getElementById("name").innerHTML = name;
-   let email = localStorage.getItem("email");
-  document.getElementById("name").innerHTML = email;
-}
-
+		//Dies wird dann wieder geprüft ob etwas vorhanden ist.
+		if(!fakeMitglieder) {
+			fakeMitglieder = [];
+		}
+		//Danach wird das Mitglied der bestehenden Liste hinzugefügt
+		fakeMitglieder.push(mitglied);
+		sessionStorage.setItem(fakeMitgliedKey, JSON.stringify(fakeMitglieder));
+	}
+	
+	
 </script>

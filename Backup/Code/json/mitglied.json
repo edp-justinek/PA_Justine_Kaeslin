@@ -1,0 +1,14 @@
+[{ "name": "Hop",
+  "fiName": "Grace",
+  "email": "grace.hop@edp.ch",
+  "adminRights": true
+},
+{ "name": "Ham",
+  "fiName": "Mag",
+  "email": "mag.ham@edp.ch",
+  "adminRights": false
+},
+{"name": "Joan",
+  "fiName": "Clarke",
+  "email": "joan.clarke@edp.ch",
+  "adminRights": false}]

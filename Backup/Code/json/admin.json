@@ -1,0 +1,12 @@
+[{ "zugrcd":" 1a2a3a4a5a6a7a8a",
+  "name": "Käslin",
+  "fiName": "Justine",
+  "email": "jkaeslin@edp.ch",
+  "adminRights": true
+},{
+	"zugrcd":" 8a7a6a5a4a3a2a1a",
+	"name": "Hop",
+	"fiName": "Grace",
+	"email": "grace.hop@edp.ch",
+	"adminRights": true
+}]

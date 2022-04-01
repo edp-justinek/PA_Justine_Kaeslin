@@ -1,206 +1,217 @@
 <cms type="masterPage" value="masterpage.htm"></cms>
 <style>
-  .mitglTable tr > th {
-    font-weight: bold;
-    border-bottom: 1px solid black;
-    padding: 10px 5px 10px 10px;
-    text-align:center;
-  }
-  .mitglTable tr > td{
-    text-align:center;
-    padding: 5px;
-  }
+    .mitglTable tr > th {
+        font-weight: bold;
+        border-bottom: 1px solid black;
+        padding: 10px 5px 10px 10px;
+        text-align: center;
+    }
+
+    .mitglTable tr > td {
+        text-align: center;
+        padding: 5px;
+    }
+
+    table {
+        width: 95%
+    }
+
+    th, td, p, input {
+        font: 15px 'Segoe UI';
+    }
+
+    table, th, td {
+        border: solid 1px #ddd;
+        border-collapse: collapse;
+        padding: 10px 3px 10px 3px;
+        text-align: center;
+    }
+
+    th {
+        font-weight: bold;
+    }
 </style>
-
-
-
 
 
 <div class="row">
     <div class="col-sm-12 mb-3">
         <h6>
-			<a href="/?home" class="text-decoration-none">Hauptseite</a> 
-			<span> / </span>
-			<a href="/?Benutzerkonto_Daten" class="text-decoration-none">Benutzerkonto</a>
-			<span> / </span>
-			<span>Mitglieder</span>
-		</h6>
+            <a class="text-decoration-none" href="/?home">Hauptseite</a>
+            <span> / </span>
+            <a class="text-decoration-none" href="/?Benutzerkonto_Daten">Benutzerkonto</a>
+            <span> / </span>
+            <span>Mitglieder</span>
+        </h6>
     </div>
 </div>
 
 <div class="row">
-  <div class="col-sm-12">
-    <h2 class="text-center">Mitglieder verwalten</h2>
-  </div>
+    <div class="col-sm-12">
+        <h2 class="text-center">Mitglieder verwalten</h2>
+    </div>
 </div>
 
 
 <div class="col-xs-12 mb-5">
-  <div class="text-center">
-	<a class="btn btn-light mb-2 text-primary" href="/?Benutzerkonto_Daten">
-		<h4>Daten</h4>
-	</a>
-	<a class="btn btn-light mb-2 text-primary" href="/?Benutzerkonto_Abos">
-		<h4>Abos</h4>
-	</a>
-	<a class="btn btn-light mb-2 text-primary" href="/?Benutzerkonto_Bestellungen">
-		<h4><u>Bestellungen</u></h4>
-	</a>
-	<a class="btn btn-light mb-2 text-primary" href="/?Benutzerkonto_Mitglieder">
-		<h4>Mitglieder</h4>
-	</a>
-  </div>
+    <div class="text-center">
+        <a class="btn btn-light mb-2 text-primary" href="/?Benutzerkonto_Daten">
+            <h4>Daten</h4>
+        </a>
+        <a class="btn btn-light mb-2 text-primary" href="/?Benutzerkonto_Abos">
+            <h4>Abos</h4>
+        </a>
+        <a class="btn btn-light mb-2 text-primary" href="/?Benutzerkonto_Bestellungen">
+            <h4><u>Bestellungen</u></h4>
+        </a>
+        <a class="btn btn-light mb-2 text-primary" href="/?Benutzerkonto_Mitglieder">
+            <h4>Mitglieder</h4>
+        </a>
+    </div>
 </div>
 
-<h3>Mitglieder verwalten</h3><br>
+<h3>Mitglieder verwalten</h3>
+
+<br>
 
 <div class="row content-box">
-  <div class="col-sm-12 col-md-5">
-    <b>Zugriffsnummer:</b> <br>
-    <input type="text" value="Nummer generieren" disabled id="outputGenerateString"><button onclick="generateString(16)"><i class="bi bi-arrow-clockwise"></i></button></input>
-	
-  </div>
-  <div class="col-sm-5">
-    <b>Mehrpersonen Abo:</b> <br>
-    <select name="abos" id="abos">
-      <option value="abo1">EDP Today Digital</option>
-      <option value="abo2">EDP Weekly Digital</option>
-    </select>
-  </div>
+    <div class="col-sm-12 col-md-5">
+        <b>Zugriffsnummer:</b> <br>
+        <input disabled id="outputGenerateString" type="text" value="1a2a3a4a5a6a7a8a">
+        <button onclick="generateString(16)"><i class="bi bi-arrow-clockwise"></i></button>
+        </input>
+
+    </div>
+    <div class="col-sm-5">
+        <b>Mehrpersonen Abo:</b> <br>
+		<p>EDP Today Digital</p>
+    </div>
 </div>
 <br>
 
-
-<table class="content-box mitglTable" width="100%">
-  <tr>
-    <th>Name</th>
-    <th>E-Mail</th>
-    <th>Admin</th>
-    <th>Löschen</th>
-  </tr>
-  <tr class="header">
-  
-  </tr>
- 
-  <tr>
-    <td>Mag Ham</td>
-    <td>mag.ham@edp.ch</td>
-    <!--Anderen Miglied Administrationsrecht vergeben-->
-    <td><input type="checkbox"></td>
-    <!--Mitglied löschen-->
-    <td><button data-target="#deletMitglied" data-toggle="modal"><i class="bi bi-trash-fill"></i></button></td>
-  </tr>
-  <tr>
-    <td>Joan Clarke</td>
-    <td>joan.clarke@edp.ch</td>
-    <!--Anderen Miglied Administrationsrecht vergeben-->
-    <td><input type="checkbox"></td>
-    <!--Mitglied löschen-->
-    <td><button data-target="#deletMitglied" data-toggle="modal"><i class="bi bi-trash-fill"></i></button></td>
-  </tr>
-</table>
+<div id="tableContainer"></div>
 <br>
 
-		<!--Mitglied hinzufügen-->
-		<div class="float-right col-sm-12">
-		  <button class="btn btn-md btn-primary btn-block btn-clr"><a class="btn-primary" href="/?Benutzerkonto_Mitglied_hinzufügen">Mitglied hinzufügen</a></button>
-		</div>
-	</cms>
+<!--Mitglied hinzufügen-->
+<div class="float-right col-sm-12">
+    <button class="btn btn-md btn-primary btn-block btn-clr"><a class="btn-primary" href="/?Benutzerkonto_Mitglied_hinzufügen">Mitglied hinzufügen</a></button>
+</div>
+</cms>
 </td>
 <td>
-    <!-- Modal -->
-    <div class="modal fade" id="deletMitglied" role="dialog">
-      <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Mitglied löschen</h4>
-          </div>
-          <div class="modal-body">
-            <p>Sind Sie sicher dass Sie dieses Mitglied löschen möchten?</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Schliessen</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
+    <script>
 	
-	<script>
+		
 	
-	const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-	function generateString(length) {
-		let result = ' ';
-		const charactersLength = characters.length;
-		for ( let i = 0; i < length; i++ ) {
-			result += characters.charAt(Math.floor(Math.random() * charactersLength));
+		//-------------------------------------------------------------------------------------------------------------------
+	
+		//In der ersten Funktion wird ein zufälliger Wert ausgegeben beim Aufruf der Funktion kann mitgegeben werden
+		//wie lange der Code sein soll, in diesem Fall ist es 16
+
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+        function generateString(length) {
+            let result = ' ';
+            const charactersLength = characters.length;
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            let zgn = document.getElementById("outputGenerateString").value = result;
+        }
+		
+		//-------------------------------------------------------------------------------------------------------------------
+		
+		//Für die Simulation eines gelöschten Mitglieds, habe ich mir die Funktion von JavaScript zu nutze gemacht
+		//Da die funktion auf dem Button ein this in der Klammer mitgibt, wird nur genau dieses Mitglied gelöscht
+		//Ansonsten müsste dies mit der Mitglieder-Index identifiziert werden.
+		function deleteMitglied(btnDelete){
+		//Als erstes wird geprüft, ob der Typ ein Objekt ist
+		if (typeof(btnDelete) == "object") {
+		//Danach wird auf dieses Objekt gesucht wo das Tag "tr" beginnt und endet, danch wird mit einer Starndard
+		//Funktion die Linie gelöscht
+			$(btnDelete).closest("tr").remove();
+		} else {
+		//Ansonsten wird die Funktion beendet
+			return false;
+			}
 		}
-	let zgn = document.getElementById("outputGenerateString").value = result;
-	}
-	
-	
-	
-/*const mitglieder = [{
-  "Name": "Hop",
-  "Vorname": "Grace",
-  "EmailAdr": "grace.hop@edp.ch",
-  "passwort": "123456",
-  "passwort_hidden": "123456",
-  "checkAGB": "true"
-},{
-  "Name": "Ham",
-  "Vorname": "Mag",
-  "EmailAdr": "mag.ham@edp.ch",
-  "passwort": "123456",
-  "passwort_hidden": "123456",
-  "checkAGB": "true"
-},{
-  "Name": "Joan",
-  "Vorname": "Clarke",
-  "EmailAdr": "joan.clarke@edp.ch",
-  "passwort": "123456",
-  "passwort_hidden": "123456",
-  "checkAGB": "true"
-}]
+
+		//-------------------------------------------------------------------------------------------------------------------
+		
+		//Diese Funktion erstellt die Tabelle und es werden die JSON-File Mitglieder übergeben dazu die Mitglieder der Session-Storage
+        function createTable(mitglieder) {
+            const container = document.getElementById('tableContainer');
+            const table = document.createElement('table');
+            const thead = document.createElement('thead');
+			//Nach dem erstellen eines table Tags und thead Tag werden zuerst die table-header hinzugefügt
+            thead.innerHTML = '<tr><th>Name</th><th>E-Mail</th><th>Admin</th><th>Löschen</th>';
+			//Danach wird ein tbody Tag erstellt
+            const tbody = document.createElement('tbody');
+			//Um alle Mitglieder aufzulisten muss mit einer For Schleife durch die Mitglieder Liste gelesen und alle Mitglieder ausgegeben
+            for (let mitglied of mitglieder) {
+                const dataContent = mitglied;
+                const tr = document.createElement('tr');
+				//Nach dem erstellen eines tr Tags werden mit sogenannten Platzhaltern die Tabellen Details abgefüllt
+                tr.innerHTML = `
+					<td>${dataContent.name} ${dataContent.fiName}</td>
+					<td>${dataContent.email}</td>
+					<td><input type="checkbox" id="adminRight" ${dataContent.adminRights ? 'checked' : ''}></td>
+					<td><button onclick="deleteMitglied(this)"><i class="bi bi-trash-fill"></i></button></td>
+				`;
+				//Diese Tabellen Details mit den Informationen der Mitglieder wird im tbody Tag eins ums andere Mitglied mit dem tr Tag angefügt
+				tbody.appendChild(tr);
+			}
+			//Danach werden thead Tag angefügt mit den erstellten Headers und das ganze in ein tbody eingefügt und zuletzt in eine Tabelle mit table
+            table.appendChild(thead);
+            table.appendChild(tbody);
+            container.appendChild(table);
+        }
+		
+		//-------------------------------------------------------------------------------------------------------------------
+		
+		//Diese funktion ist dazu da ein JSON-File per GET Methode zu lesen und ans Frontend zu senden
+        function readTextFile(file, callback) {
+            let rawFile = new XMLHttpRequest();
+            rawFile.overrideMimeType("application/json");
+            rawFile.open("GET", file, true);
+            rawFile.onreadystatechange = function () {
+                if (rawFile.readyState === 4 && rawFile.status == "200") {
+                    callback(rawFile.responseText);
+                }
+            }
+            rawFile.send(null);
+        }
+		
+		//-------------------------------------------------------------------------------------------------------------------
+		
+		//Da ich dynamisch Mitglider hinzufügen möchte lese ich den SessionStorage mit der "getItem" Methode aus 
+		function getMockMitglieder(){
+			let mitglieder = JSON.parse(sessionStorage.getItem('fake-mitglieder'));
+			//Falls nichts vorhanden ist im sessionStorage wird ein leeres Array zurückgegeben
+			if(!mitglieder){
+				return [];
+			}
+			//Ansonsten werden die Mitglieder des Session-Storage zurückgegeben
+			return mitglieder;
+		}
+		
+		//-------------------------------------------------------------------------------------------------------------------		
+
+		//Um meine vorher Definierten Funktionen Aufzurufen, verwerden ich diese Standard Funktion, die prüft, ob alle DOM Elemente geladen wurden
+        document.addEventListener('DOMContentLoaded', (event) => {
+			//Danach wird die Funktion aufgerufen, die das JSON-File liest und den Pfad mitgegeben und als Callback das JSON-File geparst gespeichert werden
+            readTextFile("/json/mitglied.json", function (text) {
+                const mitglieder = JSON.parse(text);
+				
+				//Um die bestehende JSON-File Liste mit den neu hinzugefügten Mitgliedern vom Session-Storage zusammen zu fügen wird die concat Funktion verwendet
+				const allMitglieder = mitglieder.concat(getMockMitglieder());
+			
+				//Anschliessend wird die Funktion um die Tabelle zu erstellen aufgerufen und die zuvor zusammengefügte Liste mitgegeben
+                createTable(
+					allMitglieder
+				);
+		
+            })
+        });	
 
 
-for(const mitglied of mitglieder){
-	const tableRow = document.createElement('tr');
-	const tableData1 = document.createElement('td');
-	const tableData2 = document.createElement('td');
-	const header = document.querySelector('.header');
-	
-	tableData1.textContent = `${mitglieder.Vorname}`;
-	tableData2.textContent = `${mitglieder.email}`;
-	
-	tableRow.appendChild(tableData1);
-	tableRow.appendChild(tableData2);
-	
-
-	
-	header.appendChild(tableRow);
-}*/
-
-
-
-
-/*for(const mitglied of mitglieder){
-	const mitgName = mitglied.Vorname + " " + mitglied.Name;
-	const mitgemail = mitglied.EmailAdr;
-	const td = document.createElement("td");
-	
-	td.textContent = mitgName;
-	document.getElementById("MitgliederList").appendChild(li);
-}*/
-
-
-
-/*let fullname = mitglieder.Vorname + " " + mitglieder.Name;
-	document.getElementById("name").innerText = fullname;
-	document.getElementById("email").innerText = mitglieder.EmailAdr;*/
-	
-</script>
+    </script>
